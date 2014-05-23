@@ -13,15 +13,15 @@ class PyTest(Command):
         errno = subprocess.call([sys.executable,'tests/runtests.py'])
         raise SystemExit(errno)
 
-setup(name='pyica',
+setup(name='rpy2ica',
       version='1.0',
-      description='Pure Python Package for FastICA',
+      description='Python Package to wrap R\'s fastICA',
       author='Kevin Brown',
       author_email='kevin.s.brown@uconn.edu',
-      url='https://github.com/thelahunginjeet/pyica',
-      packages=['pyica'],
-      package_dir = {'pyica': ''},
-      package_data = {'pyica' : ['tests/*.py']},
+      url='https://github.com/thelahunginjeet/rpy2ica',
+      packages=['rpy2ica'],
+      package_dir = {'rpy2ica': ''},
+      package_data = {'rpy2ica' : ['tests/*.py']},
       cmdclass = {'test': PyTest},
       license='BSD-3',
       classifiers=[
