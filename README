@@ -2,7 +2,7 @@ Author : Kevin S. Brown (kevin.s.brown@uconn.edu, github.com/thelahunginjeet)
 
 A simple python wrapper for R's fastICA, via rpy2.  For this to work, you need rpy2, R, and the R 'fastICA' package installed on your system.
 
-See the module documentation for detailed usage and functions arguments.   Assuming you've cloned into a location python knows about and you want to extract n <= N sources from a data matrix X of size N x T, you can execute 
+See the module documentation for detailed usage and function arguments.   Assuming you've cloned into a location python knows about and you want to extract n <= N sources from a data matrix X of size N x T, you can execute 
 
 	import rpy2ica.fastica as ica
 	A,W,S = ica(X,n)
@@ -10,7 +10,7 @@ See the module documentation for detailed usage and functions arguments.   Assum
 The R version operates column-wise, but most descriptions of ica are row-wise (rows are mixtures, columns are observations/samples).  I have written the wrapper to 
 perform the appropriate transpositions.
 
-rpy2ica was originally one part of my pyica module, in which I give a pure python implementation of fastICA.  However, I made the decision to extract it into a separate package because of the difficulty of maintaining it in an operable state.  Almost every new release of R breaks rpy2 in unrecoverable ways, so you will likely need to find a combination of R/rpy2 versions which work on your sytem.
+rpy2ica was originally one part of my pyica module, in which I provide a pure python implementation of fastICA.  However, I made the decision to extract it into a separate package because of the difficulty of maintaining it in an operable state.  Almost every new release of R breaks rpy2 in unrecoverable ways, so you will likely need to find a combination of R/rpy2 versions which work on your sytem.
 
 All source code is made available under the BSD-3 license.
 
