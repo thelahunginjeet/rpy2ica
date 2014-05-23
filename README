@@ -1,0 +1,27 @@
+Author : Kevin S. Brown (kevin.s.brown@uconn.edu, github.com/thelahunginjeet)
+
+A simple python wrapper for R's fastICA, via rpy2.  For this to work, you need rpy2, R, and the R 'fastICA' package installed on your system.
+
+See the module documentation for detailed usage and functions arguments.   Assuming you've cloned into a location python knows about and you want to extract n <= N sources from a data matrix X of size N x T, you can execute 
+
+	import rpy2ica.fastica as ica
+	A,W,S = ica(X,n)
+
+The R version operates column-wise, but most descriptions of ica are row-wise (rows are mixtures, columns are observations/samples).  I have written the wrapper to 
+perform the appropriate transpositions.
+
+rpy2ica was originally one part of my pyica module, in which I give a pure python implementation of fastICA.  However, I made the decision to extract it into a separate package because of the difficulty of maintaining it in an operable state.  Almost every new release of R breaks rpy2 in unrecoverable ways, so you will likely need to find a combination of R/rpy2 versions which work on your sytem.
+
+All source code is made available under the BSD-3 license.
+
+There is currently minimal testing code in the tests/ directory.  There are two ways to run the tests.  If you have pytest, run:
+
+	>py.test -v test_ica_pytest.py
+
+If you don't have pytest, you can run the test via distutils:
+	
+	>python setup.py test
+
+There is an issue in comparing the results from python (pyica.fastica) to those from R (rpy2ica.fastica).  It turns out (at least on my system) that python and R treat "junk" singular values differently.  Hence, if you vastly overextract (asking for, say, 60 sources when there are only 10 true ones in X) you will see different results with the pure python and R versions of fastICA, even with all other parameters being equal.  This should not cause a problem, and does not show up unless you ask for vastly more sources than are actually present in the data.
+
+
